@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Confirmado</title>
+</head>
+<body>
+    <div>
+        <h2>Pago Confirmado</h2>
+        <p>El valor que debes pagar es: <span id="valorFinal"></span></p>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const valorFinal = params.get('valor');
+        document.getElementById('valorFinal').textContent = valorFinal;
+    </script>
+</body>
+</html>

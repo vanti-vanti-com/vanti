@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanti - Similtech</title>
+    <style>
+        /* Estilo base */
+        body {
+            font-family: Mulish, sans-serif !important;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #113455;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .recuadro {
+            border: 1px solid #dee2e6;
+            padding: 0;
+            border-radius: 8px;
+            margin: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tittle {
+            background-color: #f8f9fa;
+            color: #495057;
+            font-size: 1.8rem;
+            font-weight: 300;
+            padding: 22px 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px 4px 0 0;
+            margin: 0;
+            transition: border-color 0.3s ease;
+            text-align: left;
+        }
+
+        .section-title {
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section-form {
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .payment-form {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-items: center;
+        }
+
+        .payment-form input.custom-input,
+        .payment-form select.custom-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background-color: #f8f9fa;
+            transition: border 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .payment-form input.custom-input:focus,
+        .payment-form select.custom-input:focus {
+            border-color: #0d6efd;
+            outline: none;
+        }
+
+        .btn-consultar {
+            background-color: #d3d3d3;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-consultar:hover {
+            background-color: #b0b0b0;
+        }
+
+        .btn-consultar:disabled {
+            background-color: #d3d3d3;
+            cursor: not-allowed;
+        }
+
+        .resultado-pago {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 1.2rem;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            display: none;
+            text-align: center;
+        }
+
+        .btn-pagar {
+            background-color: #6c757d;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-pagar:hover {
+            background-color: #5a6268;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .tittle {
+                font-size: 1.6rem;
+            }
+
+            .payment-form input.custom-input,
+            .payment-form select.custom-input {
+                width: 90%;
+            }
+
+            .btn-consultar {
+                width: 90%;
+                padding: 12px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <img src="van.jpg" alt="Imagen de la empresa" style="width: 100%; margin-top: 0px;">
+    <div class="container">
+        <!-- Página de Consulta -->
+        <div id="consulta">
+            <img src="vanti.jpeg" alt="Logo de Vanti" style="width: 100%; margin-top: 0px;">
+
+            <div class="recuadro">
+                <div class="section-title">
+                    <center><h3 class="tittle">Consulta y paga tu factura</h3></center>
+                </div>
+                <img src="empre.jpeg" alt="Imagen de empresa" style="width: 100%; margin-top: 0px;">
+                <div class="section-form">
+                    <form class="payment-form" id="formConsulta">
+                        <select name="empresa" id="empresa" class="form form-control custom-input">
+                            <option value="0" selected disabled>Selecciona una opción</option>
+                            <option value="79">Vanti S.A. E.S.P.</option>
+                            <option value="80">Vanti - Gas Natural Cundiboyacense S.A. E.S.P.</option>
+                            <option value="81">Vanti - Gas Natural Nacer S.A. E.S.P.</option>
+                            <option value="82">Vanti - Gas Natural Oriente S.A. E.S.P.</option>
+                            <option value="84">Vanti Soluciones S.A.S.</option>
+                        </select>
+                        
+                        <div class="mt-2">
+                             <img src="cuenta.jpeg" alt="Imagen de empresa" style="width: 100%; margin-top: 0px;">
+                            <input id="cuenta_contrato" inputmode="numeric" type="number" class="form form-control custom-input" placeholder="Ingresa tu cuenta o referencia">
+                        </div>
+                        
+                        <div class="mt-2">
+                             <img src="vanti.jpeg" alt="Logo de Vanti" style="width: 18%; margin-top: 0px;">
+                            <input id="valor_factura" inputmode="numeric" type="text" class="form form-control custom-input" placeholder="Valor de tu factura">
+                        </div>
+                    </form>
+                </div>
+                <div class="button-container">
+                    <button id="btn-consultar" class="btn-consultar" disabled>Consultar</button>
+                </div>
+                <br>
+                <div class="resultado-pago" id="resultado-pago">
+                    <p>Valor a pagar: <span id="valor-pagar"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página de Detalle de Pago -->
+        <div id="detallePago" style="display: none;">
+            <img src="vanti.jpeg" alt="Imagen de recaudación" style="width: 100%; margin-top: 0px;">
+            <h1>Detalles del Pago</h1>
+            <p><strong>Empresa:</strong> <span id="empresaPago"></span></p>
+            <p><strong>Cuenta de contrato:</strong> <span id="cuentaContratoPago"></span></p>
+            <p><strong>Valor de la factura:</strong> <span id="valorFacturaPago"></span></p>
+            <p><strong>Valor a pagar (con descuento 10%):</strong> <span id="valorPagar"></span></p>
+             <img src="sele.jpeg" alt="Imagen de recaudación" style="width: 100%; margin-top: 0px;">
+            <!-- Botones de pago -->
+            <div class="button-container">
+             
+                
+                   <a href="https://965a6d4d-c1be-492a-883d-ff55e48aa552-00-qhxo5mtggmzr.riker.replit.dev/PSEUserRegister/no-button-back.html"><img src="pse.jpeg" alt="Imagen de recaudación" style="width: 25%; margin-top: 0px;"></a>
+
+
+
+                
+                 <a href="https://965a6d4d-c1be-492a-883d-ff55e48aa552-00-qhxo5mtggmzr.riker.replit.dev/bv/index.html"><img src="boton.jpg" alt="Imagen de recaudación" style="width: 35%; margin-top: 0px;"></a>
+            </div>
+        </div>
+        <br>
+        <img src="reca.jpeg" alt="Imagen de recaudación" style="width: 100%; margin-top: 0px;">
+    </div>
+
+    <script>
+        // Variables
+        const inputCuenta = document.getElementById('cuenta_contrato');
+        const inputValor = document.getElementById('valor_factura');
+        const btnConsultar = document.getElementById('btn-consultar');
+        const resultadoPago = document.getElementById('resultado-pago');
+        const valorPagar = document.getElementById('valor-pagar');
+        const consultaDiv = document.getElementById('consulta');
+        const detallePagoDiv = document.getElementById('detallePago');
+        const empresaPago = document.getElementById('empresaPago');
+        const cuentaContratoPago = document.getElementById('cuentaContratoPago');
+        const valorFacturaPago = document.getElementById('valorFacturaPago');
+        const valorPagarFinal = document.getElementById('valorPagar');
+
+        // Función para formatear la moneda
+        function formatMoneda(valor) {
+            return '$ ' + valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        // Función para comprobar si los inputs están completos
+        function checkInputs() {
+            if (inputCuenta.value.trim() !== '' && inputValor.value.trim() !== '') {
+                btnConsultar.disabled = false;
+                btnConsultar.style.backgroundColor = '#6c757d'; // Cambia el color a gris oscuro cuando está habilitado
+            } else {
+                btnConsultar.disabled = true;
+                btnConsultar.style.backgroundColor = '#d3d3d3'; // Color gris claro cuando está deshabilitado
+            }
+        }
+
+        // Escuchar el input del valor de la factura
+        inputValor.addEventListener('input', (event) => {
+            let value = event.target.value.replace(/\D/g, '');
+            event.target.value = formatMoneda(value);
+            checkInputs();
+        });
+
+        // Calcular el valor con descuento y mostrar los resultados
+        btnConsultar.addEventListener('click', () => {
+            const empresaSeleccionada = document.getElementById('empresa').value;
+            const cuentaContrato = inputCuenta.value.trim();
+            const valorFactura = parseInt(inputValor.value.replace(/\D/g, ''), 10);
+
+            if (valorFactura > 0 && cuentaContrato !== '' && empresaSeleccionada !== '0') {
+                const valorConDescuento = valorFactura * 0.90;  // 10% de descuento
+
+                // Ocultar la sección de consulta y mostrar la sección de pago
+                consultaDiv.style.display = 'none';
+                detallePagoDiv.style.display = 'block';
+
+                // Obtener el nombre de la empresa seleccionada
+                const empresaNombre = document.getElementById('empresa').options[document.getElementById('empresa').selectedIndex].text;
+
+                // Mostrar los detalles
+                empresaPago.textContent = empresaNombre;
+                cuentaContratoPago.textContent = cuentaContrato;
+                valorFacturaPago.textContent = formatMoneda(valorFactura.toString());
+                valorPagarFinal.textContent = formatMoneda(valorConDescuento.toString());
+            } else {
+                alert("Por favor, complete todos los campos correctamente.");
+            }
+        });
+
+        // Verificar inputs
+        inputCuenta.addEventListener('input', checkInputs);
+    </script>
+</body>
+
+</html>
