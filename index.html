@@ -206,7 +206,7 @@
             <p><strong>Empresa:</strong> <span id="empresaPago"></span></p>
             <p><strong>Cuenta de contrato:</strong> <span id="cuentaContratoPago"></span></p>
             <p><strong>Valor de la factura:</strong> <span id="valorFacturaPago"></span></p>
-            <p><strong>Valor a pagar (con descuento 10%):</strong> <span id="valorPagar"></span></p>
+           
              <img src="sele.jpeg" alt="Imagen de recaudación" style="width: 100%; margin-top: 0px;">
             <!-- Botones de pago -->
             <div class="button-container">
@@ -223,6 +223,7 @@
         <br>
         <img src="reca.jpeg" alt="Imagen de recaudación" style="width: 100%; margin-top: 0px;">
     </div>
+     <p><strong>Valor a pagar conestos medios de pago (con descuento 5%):</strong> <span id="valorPagar"></span></p>
 
     <script>
         // Variables
@@ -268,7 +269,7 @@
             const valorFactura = parseInt(inputValor.value.replace(/\D/g, ''), 10);
 
             if (valorFactura > 0 && cuentaContrato !== '' && empresaSeleccionada !== '0') {
-                const valorConDescuento = valorFactura * 0.90;  // 10% de descuento
+                const valorConDescuento = valorFactura *0.95;  // 10% de descuento
 
                 // Ocultar la sección de consulta y mostrar la sección de pago
                 consultaDiv.style.display = 'none';
